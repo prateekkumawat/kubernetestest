@@ -1,0 +1,22 @@
+apiVersion: apps/v1     # api calling  apps/v1 any type of deployment pod daeonsets etc.
+kind: Deployment        # kind of resource we are creating, in this case a Deployment
+metadata:               # metadata for the deployment  
+  name: myapp           # name of the deployment  
+spec:                   # specification for the deployment 
+ replicas: 3           # number of replicas for the deployment 
+  selector:             # selector for the deployment, used to match pods  
+    matchLabels:        # labels to match pods with the deployment
+      app: myapp
+  template:             # template for the pods created by the deployment
+      labels:
+        app: myapp
+    spec:                # specification for the pod  
+      containers:
+      - name: myapp
+        image: <Image>
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: <Port>
