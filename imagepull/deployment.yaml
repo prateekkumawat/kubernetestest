@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  labels:
+    app: jenkins-server
+spec:
+  selector:
+    matchLabels:
+      app: jenkins-server
+  template:
+    metadata:
+      labels:
+        app: jenkins-server
+    spec:
+      containers:
+      - name: jenkins-server
+        image: prateekkumawat/infra:pre-installed-jenkins
+        imagePullPolicy: Always
+        resources:
+          limits:
+            memory: "2000Mi"
+            cpu: 2
+        ports:
+        - containerPort: 8080
+      imagePullSecrets:
+      - name: dockersecret
