@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: webapp-deploy
-        image: palzatakiya/shoppingwebsite:latest
+        image: prateekkumawat/neogym:latest
         ports:
-        - containerPort: 8085
+        - containerPort: 80

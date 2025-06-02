@@ -9,6 +9,6 @@ spec:
     app: webapp-deploy
   type: NodePort  
   ports:
-  - port: 8085
-    targetPort: 8085
+  - port: 80
+    targetPort: 80
     nodePort: 30513
