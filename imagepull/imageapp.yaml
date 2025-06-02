@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp-deploy
+  labels:
+    app: webapp-dep
+spec:
+  selector:
+    matchLabels:
+      app: webapp-deploy
+  template:
+    metadata:
+      labels:
+        app: webapp-deploy
+    spec:
+      containers:
+      - name: webapp-deploy
+        image: palzatakiya/shoppingwebsite:latest
+        ports:
+        - containerPort: 8085
