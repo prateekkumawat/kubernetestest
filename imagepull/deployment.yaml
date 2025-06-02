@@ -17,10 +17,6 @@ spec:
       - name: jenkins-server
         image: prateekkumawat/infra:pre-installed-jenkins
         imagePullPolicy: Always
-        resources:
-          limits:
-            memory: "2000Mi"
-            cpu: 2
         ports:
         - containerPort: 8080
       imagePullSecrets:
