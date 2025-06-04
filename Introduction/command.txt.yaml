@@ -1,0 +1,107 @@
+# pod why to create 
+on small unit for run application. pod container 
+- no update and rollback policy 
+- if you want to scale use deployment ot replicaset 
+- only for single app based small app or service. 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp
+  labels:
+    name: myapp
+spec:
+  containers:
+  - name: myapp
+    image: image:tag
+    resources:
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    ports:
+      - containerPort: <Port>
+
+# deployment why to create 
+# - update and rollback policy
+# - scale up and down 
+# - multiple app in single deployment
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name:  my-name
+  labels:
+    name:  my-name
+spec:
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        name:  my-name
+    spec:
+      containers:
+      - image:  ipedrazas/docmock
+        name:  my-name
+        resources:
+          requests:
+            cpu: "20m"
+            memory: "55M"
+        livenessProbe:
+          httpGet:
+            path: /_status/healthz
+            port: 5000
+          initialDelaySeconds: 90
+          timeoutSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /_status/healthz
+            port: 5000
+          initialDelaySeconds: 30
+          timeoutSeconds: 10
+        env:
+        - name:  ENVVARNAME
+          value:  ENVVARVALUE       
+        ports:
+        - containerPort:  5000
+          name:  my-name
+        volumeMounts:
+        - mountPath: /data
+          name: data
+      volumes:
+        - name: data
+          emptyDir: {}
+      restartPolicy: Always
+      imagePullPolicy: Always
+
+ # DeamonSet why to create
+# - run a pod on each node  
+#replicaset why to create
+# - scale up and down
+# - update and rollback policy
+
+#- StatefulSet why to create
+# - run a pod with stable network identity and storage
+# - run a pod with stable storage and network identity
+
+  apiVersion: batch/v1
+  kind: CronJob
+  metadata:
+    name: myjob
+  spec:
+    schedule: "* * * * *"
+    jobTemplate:
+      spec:
+        template:
+          spec:
+            containers:
+            - name: hello
+              image: busybox:1.28
+              command:
+              - /bin/sh
+              - -c
+              - date; echo Hello from the Kubernetes cluster
+            restartPolicy: OnFailure
+  
