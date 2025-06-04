@@ -19,17 +19,11 @@ spec:
         imagePullPolicy: IfNotPresent
         env:
         - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysecret  
-              key: password
+          value: admin@123
         - name: MYSQL_USER
           value: prateek 
         - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysecret  
-              key: password 
+          value: admin@123
         resources:
           limits:
             memory: "4000Mi"
