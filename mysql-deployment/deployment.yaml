@@ -23,6 +23,13 @@ spec:
             secretKeyRef:
               name: mysecret  
               key: password
+        - name: MYSQL_USER
+          value: prateek 
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret  
+              key: password 
         resources:
           limits:
             memory: "4000Mi"
