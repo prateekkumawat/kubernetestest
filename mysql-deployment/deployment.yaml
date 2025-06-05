@@ -13,6 +13,10 @@ spec:
       labels:
         app: mysql-deployment
     spec:
+      volumes:
+      - name: Data
+        persistentVolumeClaim:
+          claimName: mysql-persistent-volume-data0
       containers:
       - name: mysql-deployment
         image: mysql:latest
@@ -39,3 +43,6 @@ spec:
             cpu: "2"
         ports:
         - containerPort: 3306
+        volumeMounts:
+        - name: Data
+          mountPath: /var/lib/mysql
