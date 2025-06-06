@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: pgsql-service
+  labels:
+    app: pgsql-deployment
+spec:
+  selector:
+    app:  pgsql-deployment
+  type: ClusterIP
+  ports:
+  - name: pgsql
+    protocol: TCP
+    port: 5432
+    targetPort: 5432

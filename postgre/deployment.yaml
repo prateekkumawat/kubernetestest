@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pgsql-deployment
+  labels:
+        app: pgsql-deployment
+spec:
+  selector:
+    matchLabels:
+      app: pgsql-deployment
+  template:
+    metadata:
+      labels:
+        app: pgsql-deployment
+    spec:
+      volumes:
+      - name: data
+        persistentVolumeClaim:
+          claimName: pgsql-persistent-volume-data0
+      containers:
+      - name: pgsql-deployment
+        image: postgres:latest
+        imagePullPolicy: IfNotPresent
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysecret-pgsql
+              key: password
+        resources:
+          requests:
+            memory: "2000Mi"
+            cpu: "1"
+          limits:
+            memory: "4000Mi"
+            cpu: "2"
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: data
+          mountPath: /var/lib/postgresql/data
