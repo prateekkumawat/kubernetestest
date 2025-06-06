@@ -6,7 +6,7 @@ metadata:
     app: mysql-deployment
 spec:
   capacity:
-    storage: 2 Gi
+    storage: 2Gi
   volumeMode: Filesystem
   accessModes:
     - ReadWriteOnce
