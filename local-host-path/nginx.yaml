@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-store
+  labels:
+    name: nginx-store
+spec:
+  volumes:
+  - name: web-content
+    hostPath:
+      path: "/data/nginx-store"
+      type: Directory
+  containers:
+  - name: nginx-store
+    image: nginx:latest
+    resources:
+      requests:
+        memory: "200Mi"
+        cpu: "500m"
+      limits:
+        memory: "800Mi"
+        cpu: "1"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: web-content
+      mountPath: /usr/share/nginx/html  

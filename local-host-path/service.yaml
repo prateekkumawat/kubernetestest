@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-store-svc
+spec:
+  selector:
+    app: nginx-store
+  type: ClusterIP
+  ports:
+  - name: nginx-service
+    port:  80
+    targetPort:  8080
