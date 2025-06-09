@@ -4,6 +4,8 @@ metadata:
   name: pgsql-persistent-volume
   labels:
     app: pgsql-deployment
+annotations:
+  volume.beta.kubernetes.io/storage-class: local-path
 spec:
   capacity:
     storage: 2Gi
@@ -11,9 +13,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Delete
-  mountOptions:
-    - hard
-    - nfsvers=4.1
-  nfs:
-    path: /data/pgdata_store
-    server: 172.31.12.246
+  storageClassName: local-path
