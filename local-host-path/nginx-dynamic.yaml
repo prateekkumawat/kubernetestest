@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-dynamic-store
+  labels:
+    name: nginx-dynamic-store
+spec:
+  volumes:
+  - name: web-content
+    persistentVolumeClaim: 
+      claimName: nginx-store-dynamic-pvc
+  containers:
+  - name: nginx-dynamic-store
+    image: nginx:latest
+    resources:
+      requests:
+        memory: "200Mi"
+        cpu: "500m"
+      limits:
+        memory: "800Mi"
+        cpu: "1"
+    ports:
+      - containerPort: 80
+    volumeMounts:
+    - name: web-content
+      mountPath: /usr/share/nginx/html  
