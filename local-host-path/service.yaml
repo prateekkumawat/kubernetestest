@@ -6,7 +6,9 @@ metadata:
     app: nginx-store
 spec:
   selector:
-    app: nginx-store
+    name: nginx-store
+    labels:
+      app: nginx-store
   type: ClusterIP
   ports:
   - name: nginx-service
