@@ -4,6 +4,9 @@ metadata:
   name: nginx-store-dynamic-pvc
   labels:
     app: nginx-dynamic-store
+annotations:
+  volume.beta.kubernetes.io/storage-class: local-path
+  volume.kubernetes.io/storage-provisioner: rancher.io/local-path
 spec:
   resources:
     requests:
