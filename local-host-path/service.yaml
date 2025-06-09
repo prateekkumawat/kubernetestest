@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: nginx-store-svc
+  labels:
+    app: nginx-store
 spec:
   selector:
     app: nginx-store
