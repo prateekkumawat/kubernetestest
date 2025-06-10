@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-learning
+  labels: 
+    app: service-learning
+spec:
+  selector:
+    matchLabels:
+      app: service-learning
+  template:
+    metadata:
+      labels:
+        app: service-learning
+    spec:
+      containers:
+      - name: service-learning
+        image: prateekkumawat/kubernetes:nginx
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "500m"
+          limits:
+            memory: "800Mi"
+            cpu: "1"

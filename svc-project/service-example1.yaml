@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: service-learning-example1-svc
+  labels:
+    app: service-learning
+spec:
+  selector:
+    app: service-learning
+  type: ClusterIP
+  ports:
+  - name: service-learning-port
+    port:  8080
+    targetPort:  80
