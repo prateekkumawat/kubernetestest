@@ -1,17 +1,19 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: service-learning-example1-svc
+  name: service-learning-example2-svc
   labels:
     app: service-learning
 spec:
   selector:
     app: service-learning
-  type: ClusterIP
+  type: NodePort
   ports:
   - name: service-learning-port
     port:  8080
     targetPort:  80
+    nodePort: 30080  # if you don't define any specfic node Port in this kubernetes service assign port automatically.
 
 #### apply using below command
 # kubectl expose svc deployment service-learning --type=ClusterIP --port=8080 --target-port=80
+# nodeport 30000-32767 port range
