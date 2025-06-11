@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-app-example
+  labels:
+    name: ingress-app-example
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  ingressClassName: nginx
+spec:
+  rules:
+  - http:
+      paths:
+      - pathType: Prefix
+        path: apple
+        backend:
+          service:
+            name: mango-app-example-svc
+            port: 
+              number: 80
+  - http:
+      paths:
+      - pathType: Prefix
+        path: mango
+        backend:
+          service:
+            name: apple-app-example-svc
+            port: 
+              number: 80            
