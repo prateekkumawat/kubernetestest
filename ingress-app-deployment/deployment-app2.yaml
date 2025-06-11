@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mango-app-example
+spec:
+  selector:
+    matchLabels:
+      app: mango-app-example
+  template:
+    metadata:
+      labels:
+        app: mango-app-example
+    spec:
+      containers:
+      - name: mango-app-example
+        image: prateekkumawat/ingress:app2
+        ports:
+        - containerPort: 80

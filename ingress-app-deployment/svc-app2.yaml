@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mango-app-example-svc
+  labels:
+    app: mango-app-example
+spec:
+  selector:
+    app: mango-app-example
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 80
