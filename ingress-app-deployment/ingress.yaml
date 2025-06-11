@@ -12,7 +12,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: apple
+        path: /apple
         backend:
           service:
             name: mango-app-example-svc
@@ -21,7 +21,7 @@ spec:
   - http:
       paths:
       - pathType: Prefix
-        path: mango
+        path: /mango
         backend:
           service:
             name: apple-app-example-svc
