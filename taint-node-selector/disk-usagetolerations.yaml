@@ -18,6 +18,7 @@ spec:
     ports:
       - containerPort: 80
   tolerations:
-  - key: "custom-label.kubernetes.io/higucpuusages"
+  - key: "custom-label.kubernetes.io"
     operator: "Equal"
+    value: "highcpu"
     effect: "NoSchedule"
