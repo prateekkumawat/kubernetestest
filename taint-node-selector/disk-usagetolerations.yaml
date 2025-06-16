@@ -19,5 +19,5 @@ spec:
       - containerPort: 80
   tolerations:
   - key: "custom-label.kubernetes.io/higucpuusages"
-    operator: "Exists"
+    operator: "Equal"
     effect: "NoSchedule"
