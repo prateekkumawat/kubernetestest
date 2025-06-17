@@ -17,12 +17,12 @@ spec:
         cpu: "500m"
     ports:
       - containerPort: 80
-    affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:  
-            - key: app
-              operetor: in
-              values: 
-                - white   
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:  
+          - key: app
+            operetor: in
+            values: 
+              - white   
