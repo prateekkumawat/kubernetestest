@@ -23,6 +23,6 @@ spec:
         nodeSelectorTerms:
         - matchExpressions:  
           - key: app
-            operetor: in
+            operator: In
             values: 
-              - white   
+            - white   
