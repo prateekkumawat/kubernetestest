@@ -27,12 +27,12 @@ spec:
             memory: "200Mi"       
         ports:
         - containerPort: 80
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:  
-              - key: app
-                operator: In
-                values: 
-                - green  
+      # affinity:
+      #   nodeAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       nodeSelectorTerms:
+      #       - matchExpressions:  
+      #         - key: app
+      #           operator: In
+      #           values: 
+      #           - green  
