@@ -1,16 +1,15 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: green-app-affinity
+  namespace: default
   labels:
     application : green-app-affinity
 spec:
-  replica: 4
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
-    type: RollingUpdate
+  replicas: 4
+  selector:
+    matchLabels:
+      application: green-app-affinity
   template:
     metadata:
       labels:
