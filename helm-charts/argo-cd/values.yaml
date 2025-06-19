@@ -19,7 +19,7 @@ global:
   ##
   imagePullSecrets: []
   defaultStorageClass: ""
-  storageClass: ""
+  storageClass: local-path
   ## Security parameters
   ##
   security:
@@ -2282,7 +2282,7 @@ server:
     service:
       ## @param server.metrics.service.type Argo CD server service type
       ##
-      type: ClusterIP
+      type: NodePort
       ## @param server.metrics.service.ports.metrics Argo CD server metrics service port
       ##
       ports:
@@ -2493,7 +2493,7 @@ server:
   service:
     ## @param server.service.type Argo CD service type
     ##
-    type: ClusterIP
+    type: NodePort
     ## @param server.service.ports.http HTTP port for the gRPC ingress when enabled
     ## @param server.service.ports.https HTTPS port for the gRPC ingress when enabled
     ##
